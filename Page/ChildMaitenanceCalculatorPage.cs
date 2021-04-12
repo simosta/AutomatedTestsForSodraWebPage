@@ -6,7 +6,7 @@ namespace Sodra.Page
 {
     public class ChildMaitenanceCalculatorPage : BasePage
     {
-        private const string PageAddress = "https://www.sodra.lt/lt/skaiciuokles/vaiko_islaikymo_skaiciuokle";
+        private const string PageAddress = "https://www.sodra.lt/en/calculators/child_support";
         private IWebElement _adjudgedAmountEUR => Driver.FindElement(By.CssSelector("#react_child_support_root > div > div:nth-child(2) > div:nth-child(3) > div.field_holder > input"));
         private IWebElement _payedAmountEUR => Driver.FindElement(By.CssSelector("#react_child_support_root > div > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > div > input"));
         private IWebElement _calculateMaitenanceButton => Driver.FindElement(By.CssSelector("#react_child_support_root > div > div:nth-child(2) > div.btn-hold > div"));
