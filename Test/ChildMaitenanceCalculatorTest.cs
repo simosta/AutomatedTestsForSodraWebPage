@@ -17,7 +17,7 @@ namespace Sodra.Test
         }
         [TestCase("300", "52", "34,89 €")]
         [TestCase("250", "52", "20,41 €")]
-        public static void TestChildMaitenanaceAdjungedInLitai(string adjudged, string debtor, string result)
+        public static void TestChildMaitenanaceAdjugedInLitai(string adjudged, string debtor, string result)
         {
             childMaitenanceCalculatorPage.NavigateToChildMaitenanceCalculatorPage();
             childMaitenanceCalculatorPage.AcceptCookies();
