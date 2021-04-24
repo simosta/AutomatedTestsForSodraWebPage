@@ -15,7 +15,7 @@ namespace Sodra.Test
         public static ChildcareBenefitCalculatorPage childcareBenefitCalculatorPage;
         public static UnemployementBenefitCalculatorPage unemployementBenefitCalculatorPage;
 
-        [SetUp]
+        [OneTimeSetUp]
         public static void SetUp()
         {
             driver = CustomDriver.GetChromeDriver();
@@ -24,12 +24,15 @@ namespace Sodra.Test
             childcareBenefitCalculatorPage = new ChildcareBenefitCalculatorPage(driver);
             unemployementBenefitCalculatorPage = new UnemployementBenefitCalculatorPage(driver);
         }
-
         [TearDown]
-        public static void TearDown()
+        public static void TakeScreenshot()
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
                 MyScreenshot.MakeScreeshot(driver);
+        }
+        [OneTimeTearDown]
+        public static void TearDown()
+        {
             driver.Quit();
         }
 

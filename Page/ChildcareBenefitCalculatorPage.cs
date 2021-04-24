@@ -14,7 +14,7 @@ namespace Sodra.Page
         private static IWebElement _additionalIncomeInputfield => Driver.FindElement(By.Id("monthincome"));
         private static IWebElement _gotoResultButton => Driver.FindElement(By.CssSelector(".calc_but"));
         private static IWebElement _calculatedBenefitResult => Driver.FindElement(By.CssSelector("#sodra-calc > div > div:nth-child(5) > div.calc_results > div.table-responsive > table > tbody > tr > td.text-center.calc_results_red"));
-
+        private static IWebElement _resetButton => Driver.FindElement(By.CssSelector("#sodra-calc > div > div:nth-child(5) > div.row > div:nth-child(1) > div > div:nth-child(4) > a"));
         public ChildcareBenefitCalculatorPage(IWebDriver webdriver) : base(webdriver) { }
 
         public void NavigateToChildcareBenefitCalculatorPage()
@@ -34,7 +34,7 @@ namespace Sodra.Page
 
         public void EnterIncomeAmount(string income)
         {
-            _incomeInputField.Clear();
+            GetWait().Until(ExpectedConditions.ElementToBeClickable(_incomeInputField)).Clear();
             _incomeInputField.SendKeys(income);
         }
         public void ClickGoToThirdStepButton()
@@ -43,7 +43,7 @@ namespace Sodra.Page
         }
         public void EnterAdditionalIncomeAmount(string income)
         {
-            _additionalIncomeInputfield.Clear();
+            GetWait(20).Until(ExpectedConditions.ElementToBeClickable(_additionalIncomeInputfield)).Clear();
             _additionalIncomeInputfield.SendKeys(income);
 
         }
@@ -55,10 +55,16 @@ namespace Sodra.Page
         public void VerifyCalculatedBenefitIsCorrect(string result)
         {
             Assert.IsTrue(_calculatedBenefitResult.Text.Contains(result), $"{_calculatedBenefitResult.Text} instead of {result}");
+            ResetCalculator();
         }
         private void ClickTwoYearRadio()
         {
-            _twoYearRadio.Click();
+            GetWait().Until(ExpectedConditions.ElementToBeClickable(_twoYearRadio)).Click();
+        }
+
+        private void ResetCalculator()
+        {
+            GetWait(20).Until(ExpectedConditions.ElementToBeClickable(_resetButton)).Click();
         }
 
     }

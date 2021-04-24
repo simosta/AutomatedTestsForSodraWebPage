@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace Sodra.Page
 {
@@ -26,6 +23,8 @@ namespace Sodra.Page
         public void EnterUnemployementDate(string date)
         {
             Actions action = new Actions(Driver);
+            action.KeyDown(Keys.Control).SendKeys("A").Perform();
+            action.KeyUp(Keys.Control).Perform();
             action.SendKeys(_unemployementDateField, date);
             action.Build().Perform();
         }

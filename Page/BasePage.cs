@@ -13,7 +13,7 @@ namespace Sodra.Page
             Driver = webDriver;
         }
 
-        public WebDriverWait GetWait(int seconds = 5)
+        public WebDriverWait GetWait(int seconds = 30)
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));
             return wait;
